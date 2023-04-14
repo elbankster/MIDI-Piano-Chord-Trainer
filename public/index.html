@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Piano Trainer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- VexFlow -->
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 bg-light vh-100">
+                <div class="container sidebar">
+                    <h1 class="my-3">Piano Trainer</h1>
+                    <div class="form-group">
+                        <label for="midiDeviceSelect">MIDI Device:</label>
+                        <select class="form-control" id="midiDeviceSelect"></select>
+                    </div>
+                    <!-- Accidental Types -->
+                    <div class="container" id="accidentalOptions">
+                        <h3 class="my-3">Accidentals</h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="naturals" checked>
+                                    <label class="form-check-label" for="naturals">
+                                        Naturals
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="sharps" checked>
+                                    <label class="form-check-label" for="sharps">
+                                        Sharps
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flats" checked>
+                                    <label class="form-check-label" for="flats">
+                                        Flats
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chords -->
+                    <div class="container" id="chordOptions">
+                        <h3 class="my-3">Chords</h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="majorChords" checked>
+                                    <label class="form-check-label" for="majorChords">
+                                        Major
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="minorChords" checked>
+                                    <label class="form-check-label" for="minorChords">
+                                        Minor
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="diminishedChords">
+                                    <label class="form-check-label" for="diminishedChords">
+                                        Diminished
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="augmentedChords">
+                                    <label class="form-check-label" for="augmentedChords">
+                                        Augmented
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="majorSeventhChords">
+                                    <label class="form-check-label" for="majorSeventhChords">
+                                        Major 7th
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="minorSeventhChords">
+                                    <label class="form-check-label" for="minorSeventhChords">
+                                        Minor 7th
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Inversions -->
+                    <div class="container" id="inversionOptions">
+                        <h3 class="my-3">Inversions</h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="rootPosition" checked>
+                                    <label class="form-check-label" for="rootPosition">
+                                        Root
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="firstInversion" checked>
+                                    <label class="form-check-label" for="firstInversion">
+                                        First
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="secondInversion" checked>
+                                    <label class="form-check-label" for="secondInversion">
+                                        Second
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="thirdInversion" disabled>
+                                    <label class="form-check-label" for="thirdInversion">
+                                        Third
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" id="startButton">Start</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-10">
+                <!-- Main content area -->
+                <div class="container" id="mainContent">
+                    
+                    <!-- Rest of the main content -->
+                    <div id="prompt">
+                        <div id="output"></div>
+                        <h2 id="chordPrompt"></h2>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Web MIDI API Polyfill -->
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+
+
+    <!-- Custom JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
